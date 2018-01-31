@@ -6,7 +6,7 @@ Created on Wed Jan 31 21:22:13 2018
 """
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-#Import training data
+#Import training da
 train = pd.read_csv('train.csv')
 train.symptoms
 train.disease
@@ -31,7 +31,8 @@ predicted = clf.predict_proba(tfid_vectorizer.transform(test.symptoms))
 prob = predicted.tolist()[0]
 prob = [x*100 for x in prob]
 #Probabilities of diseases
-print dict(zip(le.classes_,prob))
+output = dict(zip(le.classes_,prob))
+print pd.DataFrame(output.items())
 #Most probable
 predicted = clf.predict(tfid_vectorizer.transform(test.symptoms))
 print le.classes_[predicted]
